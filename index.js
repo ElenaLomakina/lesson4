@@ -14,8 +14,40 @@ function averageArr(array) {
     return sum / array.length;
 }
 
+// -- exchange of currency ----------------------------------------------------------------------
 
-// -- add 1 to each element of array ---------------------------------------
+var cur1 = prompt("Choose the currency you want to exchange: USD, EUR, UAH");
+var cur2 = prompt("Choose the currency to which you want to change: USD, EUR, UAH");
+var sum1 = prompt("Enter your sum");
+
+var sum2;
+var rateUSD = 27.5;
+var rateEUR = 32.5;
+
+var change = {
+    "USD": {
+        "USD": sum1,
+        "EUR": sum1 * rateUSD / rateEUR,
+        "UAH": sum1 * rateUSD
+    },
+    "EUR": {
+        "USD": sum1 * rateEUR / rateUSD,
+        "EUR": sum1 ,
+        "UAH": sum1 * rateEUR
+    },
+    "UAH": {
+        "USD": sum1 / rateUSD,
+        "EUR": sum1 / rateEUR,
+        "UAH": sum1
+    }
+};
+
+sum2 = Math.round(change [cur1][cur2] * 100) / 100;
+alert( sum1 +" " + cur1 + " is " + sum2 + " " + cur2);
+
+
+
+// -- add 1 to each element of array ---------------------------------------------------------
 
 function add1ToEach(array) {
     return array.map (function (value2) { return value2 += 1; })
